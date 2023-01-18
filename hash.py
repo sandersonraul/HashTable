@@ -1,17 +1,17 @@
 n = int(input())
 outputs = []
 for i in range(n):
-    m, c = map(int, input().split())
+    size, inputs = map(int, input().split())
 
-    table = [[] for _ in range(m)]
+    table = [[] for _ in range(size)]
 
     keys = list(map(int, input().split()))
 
     for key in keys:
-        address = key % m
+        address = key % size
         table[address].append(key)
     output = ""
-    for j in range(m):
+    for j in range(size):
         output += f"{j} -> "
         for k in table[j]:
             output += f"{k} -> "
