@@ -1,30 +1,24 @@
+n = int(input())
+outputs = []
+for i in range(n):
+    m, c = map(int, input().split())
 
-def display_hash(hashtable):
-	
-	for i in range(len(hashtable)):
-		print(i, end = " ")
-		
-		for j in hashtable[i]:
-			print("->", end = " ")
-			print(j, end = " ")
-			
-		print("-> \ ")
+    table = [[] for _ in range(m)]
 
-def Hashing(keyvalue):
-	return keyvalue % len(hashtable)
+    keys = list(map(int, input().split()))
 
-def insert(hashtable, keyvalue):
-	hash_key = Hashing(keyvalue)
-	hashtable[hash_key].append(keyvalue)
+    for key in keys:
+        address = key % m
+        table[address].append(key)
+    output = ""
+    for j in range(m):
+        output += f"{j} -> "
+        for k in table[j]:
+            output += f"{k} -> "
+        output += "\\\n"
+    outputs.append(output)
     
-inputs = int(input())
-
-for i in range(inputs):
-    args = input().split()
-    size = int(args[0])
-    inputs_number = int(args[1])
-    hashtable = [[] for _ in range(size)]
-    numbers = input().split()
-    for j in range(inputs_number):
-        insert(hashtable, int(numbers[j]))
-    display_hash(hashtable)
+for i, output in enumerate(outputs):
+    print(output)
+    if i != len(outputs) - 1:
+        print()
